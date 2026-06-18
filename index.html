@@ -12,6 +12,21 @@
 
 <body>
 
+    <div id="password-overlay">
+        <div class="password-box">
+            <h2>🔒 Área Restrita</h2>
+            <p>Digite a senha para acessar esta página.</p>
+
+            <input type="password" id="pagePassword" placeholder="Digite a senha" autocomplete="off">
+
+            <button onclick="checkPassword()">
+                Entrar
+            </button>
+
+            <p id="error-message"></p>
+        </div>
+    </div>
+
     <div class="background"></div>
 
     <header>
@@ -99,7 +114,8 @@
 
                     <div class="software-footer">
                         <span class="price">R$ 49,90</span>
-                        <a href="https://wa.me/5551994879614?text=Olá, gostaria de comprar o Adobe Acrobat" class="btn-buy">Comprar</a>
+                        <a href="https://wa.me/5551994879614?text=Olá, gostaria de comprar o Adobe Acrobat"
+                            class="btn-buy">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -116,7 +132,8 @@
 
                     <div class="software-footer">
                         <span class="price">R$ 45,90</span>
-                        <a href="https://wa.me/5551994879614?text=Olá, gostaria de comprar o Adobe Photoshop" class="btn-buy">Comprar</a>
+                        <a href="https://wa.me/5551994879614?text=Olá, gostaria de comprar o Adobe Photoshop"
+                            class="btn-buy">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -133,7 +150,8 @@
 
                     <div class="software-footer">
                         <span class="price">R$ 44,90</span>
-                        <a href="https://wa.me/5551994879614?text=Olá, gostaria de comprar o Camtasia" class="btn-buy">Comprar</a>
+                        <a href="https://wa.me/5551994879614?text=Olá, gostaria de comprar o Camtasia"
+                            class="btn-buy">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -150,7 +168,8 @@
 
                     <div class="software-footer">
                         <span class="price">R$ 49,90</span>
-                        <a href="https://wa.me/5551994879614?text=Olá, gostaria de comprar o Adobe Illustrator" class="btn-buy">Comprar</a>
+                        <a href="https://wa.me/5551994879614?text=Olá, gostaria de comprar o Adobe Illustrator"
+                            class="btn-buy">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -159,10 +178,43 @@
 
     </section>
 
-  <a href="https://wa.me/5554996366433?text=Olá, preciso de ajuda com a Instalação do Corel" target="_blank" class="support-button">
-    <i class="fa-brands fa-whatsapp"></i>
-    <span>Necessita de Suporte?</span>
-</a>
+    <a href="https://wa.me/5554996366433?text=Olá, preciso de ajuda com a Instalação do Corel" target="_blank"
+        class="support-button">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>Necessita de Suporte?</span>
+    </a>
+
+    <script>
+        const ACCESS_PASSWORD = "id2026102";
+
+        function checkPassword() {
+
+            const password =
+                document.getElementById('pagePassword').value;
+
+            if (password === ACCESS_PASSWORD) {
+
+                document.getElementById('password-overlay')
+                    .style.display = 'none';
+
+            } else {
+
+                document.getElementById('error-message')
+                    .textContent = 'Senha incorreta';
+
+            }
+        }
+
+        document
+            .getElementById('pagePassword')
+            .addEventListener('keypress', function (e) {
+
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+
+            });
+    </script>
 
 </body>
 
