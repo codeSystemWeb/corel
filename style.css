@@ -513,3 +513,348 @@ nav a:hover{
     margin-top:15px;
     min-height:20px;
 }
+
+/* ==========================
+   SEÇÃO PLANOS
+========================== */
+
+.precos {
+
+    padding:80px 8%;
+
+    text-align:center;
+
+}
+
+
+.precos h2 {
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+}
+
+
+.subtitulo {
+
+    margin:0 auto;
+
+    max-width:600px;
+
+    color:#94a3b8;
+
+    line-height:1.7;
+
+}
+
+
+
+/* ==========================
+   GRID
+========================== */
+
+
+.precos-grid {
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+    margin-top:50px;
+
+}
+
+
+
+/* ==========================
+   CARD
+========================== */
+
+
+.plano {
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.08);
+
+
+    padding:30px;
+
+
+    border-radius:22px;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+
+    transition:.35s;
+
+
+    height:100%;
+
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+
+.plano:hover {
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+    0 20px 40px rgba(0,0,0,.25);
+
+}
+
+
+
+/* ==========================
+   CARD DESTAQUE
+========================== */
+
+
+.plano.destaque {
+
+    border:
+
+    2px solid #22c55e;
+
+
+    position:relative;
+
+
+}
+
+
+
+.plano.destaque::before {
+
+    content:"MAIS ESCOLHIDO";
+
+
+    position:absolute;
+
+
+    top:-15px;
+
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+    background:#22c55e;
+
+
+    color:#081018;
+
+
+    padding:7px 18px;
+
+
+    border-radius:30px;
+
+
+    font-size:12px;
+
+
+    font-weight:700;
+
+}
+
+
+
+/* ==========================
+   IMAGEM
+========================== */
+
+
+.plano img {
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:contain;
+
+    margin:0 auto 10px;
+
+}
+
+
+
+/* ==========================
+   TITULO
+========================== */
+
+
+.plano h3 {
+
+    font-size:22px;
+
+}
+
+
+
+/* ==========================
+   PREÇO
+========================== */
+
+
+.preco {
+
+    font-size:32px;
+
+    font-weight:800;
+
+
+    color:#22c55e;
+
+}
+
+
+
+/* ==========================
+   DESCRIÇÃO
+========================== */
+
+
+.descricao {
+
+    color:#cbd5f5;
+
+
+    font-size:14px;
+
+
+    line-height:1.7;
+
+
+}
+
+
+
+/* ==========================
+   LISTA
+========================== */
+
+
+.plano ul {
+
+    list-style:none;
+
+    padding:0;
+
+    margin:10px 0;
+
+    text-align:left;
+
+}
+
+
+
+.plano ul li {
+
+    margin-bottom:10px;
+
+
+    color:#e2e8f0;
+
+
+    font-size:14px;
+
+}
+
+
+
+/* ==========================
+   BOTÃO
+========================== */
+
+
+.plano .btn {
+
+
+    margin-top:auto;
+
+
+    padding:14px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #4f8cff
+    );
+
+
+    color:white;
+
+
+    text-decoration:none;
+
+
+    font-weight:600;
+
+
+    transition:.3s;
+
+}
+
+
+
+.plano .btn:hover {
+
+
+    transform:scale(1.03);
+
+
+}
+
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+
+@media(max-width:768px){
+
+
+    .precos h2 {
+
+        font-size:26px;
+
+    }
+
+
+    .plano.destaque {
+
+        transform:none;
+
+    }
+
+}
