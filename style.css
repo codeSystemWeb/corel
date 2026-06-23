@@ -971,3 +971,89 @@ img, video, iframe {
   text-decoration: none;
   pointer-events: none;
 }
+
+/* ==========================
+   DESTAQUE 2026
+========================== */
+
+
+.software-card.lancamento{
+
+    position:relative;
+
+    border:1px solid rgba(255,140,0,.5);
+
+}
+
+
+
+.badge-2026{
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+
+
+    background:linear-gradient(
+        135deg,
+        #ff6b00,
+        #ffb000
+    );
+
+
+    color:white;
+
+
+    padding:7px 15px;
+
+
+    border-radius:30px;
+
+
+    font-size:12px;
+
+
+    font-weight:700;
+
+
+    z-index:2;
+
+
+    box-shadow:
+
+    0 5px 15px rgba(255,120,0,.4);
+
+
+    animation:pulse2026 2s infinite;
+
+}
+
+
+
+@keyframes pulse2026{
+
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+
+}
