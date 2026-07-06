@@ -62,14 +62,26 @@
                     target="_blank" class="btn-primary">
                     <i class="fa-solid fa-download"></i>
                     Download para Windows
-                    <br> <small>Assistir o vídeo</small>
+                    <br>
+                    <small>COREL 2026 • Assista o vídeo</small>
                 </a>
+
                 <a href="https://drive.google.com/drive/folders/1EPJ5OtgVlj1p1pynQ-rBciS6d6g6SCBK?usp=drive_link"
-                    target="_blank" class="btn-primary ">
+                    target="_blank" class="btn-primary">
                     <i class="fa-solid fa-download"></i>
-                    Download para MAC <br> <small>TUTORIAL EM ANEXO</small>
+                    Download para MAC
+                    <br>
+                    <small>TUTORIAL EM ANEXO</small>
                 </a>
             </div>
+
+            <div class="old-versions">
+                <a href="#" id="openVersions">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Quer uma versão antiga? <strong>Clique aqui</strong>
+                </a>
+            </div>
+            <br>
 
             <div class="stats">
                 <div>
@@ -193,7 +205,7 @@
                 </div>
             </div>
 
-             <div class="software-card">
+            <div class="software-card">
                 <img src="./assets/filmora.png" alt="Software ERP">
 
                 <span class="badge-2026">
@@ -273,7 +285,7 @@
             </div>
 
             <div class="software-card">
-                
+
                 <img src="./assets/indesign.png" alt="Software ERP">
 
                 <div class="software-info">
@@ -486,6 +498,43 @@
         <span>Necessita de Suporte?</span>
     </a>
 
+    <div class="modal-overlay" id="versionsModal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <h2>
+                    <i class="fa-solid fa-box-archive"></i>
+                    Versões Anteriores do CorelDRAW
+                </h2>
+
+                <button id="closeVersions">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <p class="modal-description">
+                Escolha abaixo a versão desejada.
+            </p>
+
+            <div class="versions-list">
+
+                <a href="https://drive.google.com/drive/folders/1Y2Td4gwYL2uxpruI7TeIKSteHNBD6eg9?usp=drive_link" target="_blank">
+                    <span>CorelDRAW 2025 (WINDOWS)</span>
+                    <i class="fa-solid fa-download"></i>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1dlfJB7gRTtHDoJtu9T7JNvTp8QTp6Wfk?usp=sharing" target="_blank">
+                    <span>CorelDRAW 2022 (WINDOWS)</span>
+                    <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
     <script>
         const ACCESS_PASSWORD = "id2026102";
 
@@ -516,6 +565,45 @@
                 }
 
             });
+
+
+
+
+    </script>
+
+    <script>
+
+        const modal =
+            document.getElementById("versionsModal");
+
+        document
+            .getElementById("openVersions")
+            .onclick = function (e) {
+
+                e.preventDefault();
+
+                modal.classList.add("active");
+
+            }
+
+        document
+            .getElementById("closeVersions")
+            .onclick = function () {
+
+                modal.classList.remove("active");
+
+            }
+
+        modal.onclick = function (e) {
+
+            if (e.target === modal) {
+
+                modal.classList.remove("active");
+
+            }
+
+        }
+
     </script>
 
 </body>
