@@ -521,11 +521,13 @@
 
             <div class="versions-list">
 
-                <a href="https://drive.google.com/drive/folders/1Y2Td4gwYL2uxpruI7TeIKSteHNBD6eg9?usp=drive_link" target="_blank">
+                <a href="https://drive.google.com/drive/folders/1Y2Td4gwYL2uxpruI7TeIKSteHNBD6eg9?usp=drive_link"
+                    target="_blank">
                     <span>CorelDRAW 2025 (WINDOWS)</span>
                     <i class="fa-solid fa-download"></i>
                 </a>
-                <a href="https://drive.google.com/drive/folders/1dlfJB7gRTtHDoJtu9T7JNvTp8QTp6Wfk?usp=sharing" target="_blank">
+                <a href="https://drive.google.com/drive/folders/1dlfJB7gRTtHDoJtu9T7JNvTp8QTp6Wfk?usp=sharing"
+                    target="_blank">
                     <span>CorelDRAW 2022 (WINDOWS)</span>
                     <i class="fa-solid fa-download"></i>
                 </a>
@@ -536,38 +538,132 @@
     </div>
 
     <script>
-        const ACCESS_PASSWORD = "id2026102";
 
-        function checkPassword() {
+        (() => {
 
-            const password =
-                document.getElementById('pagePassword').value;
+            /* HASH SHA-256 da senha */
+            const PASSWORD_HASH =
+                "c5c428d70a21dfd82b5b9ee4b5c532cb92d05f13f734116bca3912ebd5b12380";
 
-            if (password === ACCESS_PASSWORD) {
+            /* Chave usada no localStorage */
+            const STORAGE_KEY =
+                "_csw_auth";
 
-                document.getElementById('password-overlay')
-                    .style.display = 'none';
+            /* Token salvo após autenticação */
+            const ACCESS_TOKEN =
+                "csw-corel-2026-authenticated";
 
-            } else {
+            async function sha256(texto) {
 
-                document.getElementById('error-message')
-                    .textContent = 'Senha incorreta';
+                const data =
+                    new TextEncoder().encode(texto);
+
+                const hash =
+                    await crypto.subtle.digest("SHA-256", data);
+
+                return [...new Uint8Array(hash)]
+                    .map(b => b.toString(16).padStart(2, "0"))
+                    .join("");
 
             }
-        }
 
-        document
-            .getElementById('pagePassword')
-            .addEventListener('keypress', function (e) {
+            function liberarPagina() {
 
-                if (e.key === 'Enter') {
-                    checkPassword();
+                document
+                    .getElementById("password-overlay")
+                    .style.display = "none";
+
+            }
+
+            function salvarToken() {
+
+                localStorage.setItem(
+
+                    STORAGE_KEY,
+
+                    btoa(
+                        ACCESS_TOKEN +
+                        "|" +
+                        new Date().getTime()
+                    )
+
+                );
+
+            }
+
+            function possuiToken() {
+
+                const token =
+                    localStorage.getItem(STORAGE_KEY);
+
+                if (!token) return false;
+
+                try {
+
+                    return atob(token)
+                        .startsWith(ACCESS_TOKEN);
+
+                } catch {
+
+                    return false;
+
                 }
 
-            });
+            }
 
+            async function validarSenha() {
 
+                const senha =
+                    document
+                        .getElementById("pagePassword")
+                        .value
+                        .trim();
 
+                const hash =
+                    await sha256(senha);
+
+                if (hash === PASSWORD_HASH) {
+
+                    salvarToken();
+
+                    document
+                        .getElementById("error-message")
+                        .textContent = "";
+
+                    liberarPagina();
+
+                } else {
+
+                    document
+                        .getElementById("error-message")
+                        .textContent = "Senha incorreta";
+
+                }
+
+            }
+
+            window.checkPassword =
+                validarSenha;
+
+            document
+                .getElementById("pagePassword")
+                .addEventListener("keypress", (e) => {
+
+                    if (e.key === "Enter") {
+
+                        validarSenha();
+
+                    }
+
+                });
+
+            if (possuiToken()) {
+
+                liberarPagina();
+
+            }
+
+        })();
 
     </script>
 
@@ -608,57 +704,57 @@
 
     <script>
 
-        async function registrarAcesso(){
+        async function registrarAcesso() {
 
-    let ipInfo = {};
+            let ipInfo = {};
 
-    try{
+            try {
 
-        const r = await fetch("https://ipapi.co/json/");
+                const r = await fetch("https://ipapi.co/json/");
 
-        ipInfo = await r.json();
+                ipInfo = await r.json();
 
-    }catch(e){}
+            } catch (e) { }
 
-    const dados = {
+            const dados = {
 
-        ip: ipInfo.ip || "",
+                ip: ipInfo.ip || "",
 
-        cidade: ipInfo.city || "",
+                cidade: ipInfo.city || "",
 
-        estado: ipInfo.region || "",
+                estado: ipInfo.region || "",
 
-        pais: ipInfo.country_name || "",
+                pais: ipInfo.country_name || "",
 
-        provedor: ipInfo.org || "",
+                provedor: ipInfo.org || "",
 
-        pagina: location.pathname,
+                pagina: location.pathname,
 
-        referer: document.referrer,
+                referer: document.referrer,
 
-        navegador: navigator.userAgent.match(/Chrome|Firefox|Edge|Safari/)?.[0] || "",
+                navegador: navigator.userAgent.match(/Chrome|Firefox|Edge|Safari/)?.[0] || "",
 
-        sistema: navigator.platform,
+                sistema: navigator.platform,
 
-        idioma: navigator.language,
+                idioma: navigator.language,
 
-        resolucao: screen.width+"x"+screen.height,
+                resolucao: screen.width + "x" + screen.height,
 
-        userAgent: navigator.userAgent
+                userAgent: navigator.userAgent
 
-    };
+            };
 
-    fetch("https://script.google.com/macros/s/AKfycbw4CYZ5vJPuF_0iY4IYLhUu2fuVbfpdRU-00AZlnzqFbfQtlzKZSsZjT746T2fbqJdY/exec",{
+            fetch("https://script.google.com/macros/s/AKfycbw4CYZ5vJPuF_0iY4IYLhUu2fuVbfpdRU-00AZlnzqFbfQtlzKZSsZjT746T2fbqJdY/exec", {
 
-        method:"POST",
+                method: "POST",
 
-        body:JSON.stringify(dados)
+                body: JSON.stringify(dados)
 
-    });
+            });
 
-}
+        }
 
-registrarAcesso();
+        registrarAcesso();
     </script>
 
 </body>
