@@ -606,6 +606,61 @@
 
     </script>
 
+    <script>
+
+        async function registrarAcesso(){
+
+    let ipInfo = {};
+
+    try{
+
+        const r = await fetch("https://ipapi.co/json/");
+
+        ipInfo = await r.json();
+
+    }catch(e){}
+
+    const dados = {
+
+        ip: ipInfo.ip || "",
+
+        cidade: ipInfo.city || "",
+
+        estado: ipInfo.region || "",
+
+        pais: ipInfo.country_name || "",
+
+        provedor: ipInfo.org || "",
+
+        pagina: location.pathname,
+
+        referer: document.referrer,
+
+        navegador: navigator.userAgent.match(/Chrome|Firefox|Edge|Safari/)?.[0] || "",
+
+        sistema: navigator.platform,
+
+        idioma: navigator.language,
+
+        resolucao: screen.width+"x"+screen.height,
+
+        userAgent: navigator.userAgent
+
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbw4CYZ5vJPuF_0iY4IYLhUu2fuVbfpdRU-00AZlnzqFbfQtlzKZSsZjT746T2fbqJdY/exec",{
+
+        method:"POST",
+
+        body:JSON.stringify(dados)
+
+    });
+
+}
+
+registrarAcesso();
+    </script>
+
 </body>
 
 </html>
