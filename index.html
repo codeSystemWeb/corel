@@ -536,73 +536,35 @@
     </div>
 
     <script>
+        const ACCESS_PASSWORD = "id2026102";
 
-    // COLOQUE AQUI O HASH GERADO
-    const PASSWORD_HASH = "77d1d8d30290b40e6cb0d4540a7f9d5dbf76685b22b916bbf35ea36b762d3c52";
+        function checkPassword() {
 
-    async function sha256(texto){
+            const password =
+                document.getElementById('pagePassword').value;
 
-        const encoder = new TextEncoder();
+            if (password === ACCESS_PASSWORD) {
 
-        const data = encoder.encode(texto);
+                document.getElementById('password-overlay')
+                    .style.display = 'none';
 
-        const hash = await crypto.subtle.digest("SHA-256", data);
+            } else {
 
-        return Array.from(new Uint8Array(hash))
-            .map(b => b.toString(16).padStart(2,"0"))
-            .join("");
-
-    }
-
-
-    async function checkPassword(){
-
-        const password =
-            document.getElementById("pagePassword").value;
-
-        const hash = await sha256(password);
-
-        if(hash === PASSWORD_HASH){
-
-            localStorage.setItem("corel_access","ok");
-
-            document
-                .getElementById("password-overlay")
-                .style.display="none";
-
-        }else{
-
-            document
-                .getElementById("error-message")
-                .textContent="Senha incorreta";
-
-        }
-
-    }
-
-
-    if(localStorage.getItem("corel_access") === "ok"){
-
-        document
-            .getElementById("password-overlay")
-            .style.display="none";
-
-    }
-
-
-    document
-        .getElementById("pagePassword")
-        .addEventListener("keypress",function(e){
-
-            if(e.key==="Enter"){
-
-                checkPassword();
+                document.getElementById('error-message')
+                    .textContent = 'Senha incorreta';
 
             }
+        }
 
-        });
+        document
+            .getElementById('pagePassword')
+            .addEventListener('keypress', function (e) {
 
-</script>
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+
+            });
 
 
 
