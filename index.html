@@ -627,10 +627,8 @@
                     salvarToken();
 
                     document
-                        .getElementById("error-message")
-                        .textContent = "";
-
-                    liberarPagina();
+                        .getElementById("warning-modal")
+                        .classList.add("show");
 
                 } else {
 
@@ -644,6 +642,7 @@
 
             window.checkPassword =
                 validarSenha;
+                window.liberarPagina = liberarPagina;
 
             document
                 .getElementById("pagePassword")
@@ -664,6 +663,7 @@
             }
 
         })();
+
 
     </script>
 
@@ -755,6 +755,52 @@
         }
 
         registrarAcesso();
+    </script>
+
+   
+
+    <div id="warning-modal" class="warning-modal">
+
+        <div class="warning-box">
+
+            <div class="warning-icon">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+
+            <h2>ATENÇÃO</h2>
+
+            <p>
+                Pedimos por gentileza que <strong>não instale o programa antes de assistir ao vídeo</strong>
+                (no caso do Windows). O vídeo contém todas as instruções para que a instalação ocorra
+                perfeitamente.
+            </p>
+
+            <p>
+                Se mesmo assim precisar de ajuda, entre em contato pelo
+                <strong>WhatsApp do suporte</strong>. O chat do Mercado Livre pode ser lento
+                e as notificações podem demorar.
+            </p>
+
+            <button id="btnWarning">
+                Entendi
+            </button>
+
+        </div>
+
+    </div>
+
+     <script>
+        document
+    .getElementById("btnWarning")
+    .addEventListener("click", function(){
+
+        document
+            .getElementById("warning-modal")
+            .classList.remove("show");
+
+        liberarPagina();
+
+    });
     </script>
 
 </body>

@@ -1298,3 +1298,136 @@ img, video, iframe {
     transform:translateX(5px);
 
 }
+
+/*=========================
+    MODAL DE AVISO
+==========================*/
+
+.warning-modal{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(6px);
+
+    z-index:999999;
+
+}
+
+.warning-modal.show{
+
+    display:flex;
+
+}
+
+.warning-box{
+
+    width:min(92%,560px);
+
+    background:#182235;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+    animation:popup .25s ease;
+
+}
+
+.warning-icon{
+
+    font-size:52px;
+
+    color:#f59e0b;
+
+    margin-bottom:18px;
+
+}
+
+.warning-box h2{
+
+    font-size:30px;
+
+    margin-bottom:18px;
+
+    color:#fff;
+
+}
+
+.warning-box p{
+
+    color:#cbd5e1;
+
+    line-height:1.7;
+
+    margin-bottom:18px;
+
+    font-size:16px;
+
+}
+
+.warning-box strong{
+
+    color:#fff;
+
+}
+
+.warning-box button{
+
+    margin-top:10px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    border:none;
+
+    padding:14px 40px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.warning-box button:hover{
+
+    background:#1d4ed8;
+
+}
+
+@keyframes popup{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px) scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0) scale(1);
+
+    }
+
+}
